@@ -1,14 +1,13 @@
-package com.example.demo;
 public class Base62 {
 	final static int RADIX = 62;
 	final static String CODEC = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
+	
 	public String encode(long param) {
 		StringBuffer sb = new StringBuffer();
-		while (param > 0) {
+		do {
 			sb.append(CODEC.charAt((int) (param % RADIX)));
 			param /= RADIX;
-		}
+		} while (param > 0);
 		return sb.toString();
 	}
 
