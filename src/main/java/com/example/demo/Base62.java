@@ -1,3 +1,5 @@
+package com.example.demo;
+
 public class Base62 {
 	final static int RADIX = 62;
 	final static String CODEC = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
