@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,13 +23,15 @@ public class UrlShorteningController {
 		this.urlShorteningService = urlShorteningService;
 	}
 
-	@GetMapping("/")
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {
+		System.out.println("home/index");
 		return "home/index";
 	}
 
-	@RequestMapping(value = "/{param}")
-	public ModelAndView redirect(@PathVariable String param) throws NoSuchAlgorithmException {
+	@RequestMapping(value = "/{param:[A-Za-z0-9]{1,8}$}")
+	public ModelAndView redirect(@PathVariable(required=true) String param) throws NoSuchAlgorithmException {
+		System.out.println(param);
 		return new ModelAndView("redirect:" + urlShorteningService.getLongURL(param));
 	}
 
