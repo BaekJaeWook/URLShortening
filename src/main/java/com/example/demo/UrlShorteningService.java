@@ -20,13 +20,10 @@ public class UrlShorteningService {
 		SHA256 sha256 = new SHA256();
 		Base62 base62 = new Base62();
 
-		System.out.println(0);
 		if (urlShorteningDao.isRegisteredLongURL(longURL)) {
-			System.out.println(1);
 			return urlShorteningDao.getShorteningKey(longURL);
 		}
 
-		System.out.println(2);
 		String sha256Hash = sha256.encode(longURL.getBytes());
 
 		for (int i = 0; i < sha256Hash.length() - SUB_STRING_LENGTH; i++) {
@@ -42,13 +39,10 @@ public class UrlShorteningService {
 			if (urlShorteningDao.isExistKey(shorteningKey)) {
 				System.out.println("Hash Collision");
 			} else {
-				System.out.println(3);
 				urlShorteningDao.insert(shorteningKey, longURL);
-				System.out.println(4);
 				return shorteningKey;
 			}
 		}
-		System.out.println(5);
 		return ERR_CODE_2;
 	}
 
