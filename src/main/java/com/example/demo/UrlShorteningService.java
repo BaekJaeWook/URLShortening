@@ -7,11 +7,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UrlShorteningService {
-
 	final static long MAX = 218340105584895l;
 	final static int SUB_STRING_LENGTH = 12;
-
-	final static String ERR_CODE_1 = "NOT_EXIST";
 
 	@Autowired
 	private UrlShorteningDao urlShorteningDao;
@@ -55,6 +52,6 @@ public class UrlShorteningService {
 		if (urlShorteningDao.isExistKey(shorteningKey)) {
 			return urlShorteningDao.getLongURL(shorteningKey);
 		}
-		return ERR_CODE_1;
+		return DD.ERR_CODES[0];
 	}
 }
