@@ -29,8 +29,11 @@ public class UrlShorteningController {
 	}
 
 	@RequestMapping(value = "/{param:[A-Za-z0-9]{1,8}$}")
-	public ModelAndView redirect(@PathVariable(required=true) String param) throws NoSuchAlgorithmException {
-		System.out.println(param);
+	public ModelAndView redirect(@PathVariable(required = true) String param) throws NoSuchAlgorithmException {
+		if (UrlShorteningService.ERR_CODE_1.equals(urlShorteningService.getLongURL(param))) {
+			return new ModelAndView("redirect:/error.html");
+		}
+
 		return new ModelAndView("redirect:" + urlShorteningService.getLongURL(param));
 	}
 
@@ -39,10 +42,9 @@ public class UrlShorteningController {
 	public Map<String, Object> urlShortening(@RequestBody Map<String, Object> param) throws NoSuchAlgorithmException {
 		Map<String, Object> result = new HashMap<>();
 
-		String shorteningKey = urlShorteningService.urlShortening((String) param.get("longURL"));
+		String shorteningKey = urlShorteningService.shorten((String) param.get("longURL"));
 		String shortenURL = "http://localhost:8080/" + shorteningKey;
 
-		System.out.println("shortenURL:" + shortenURL);
 		result.put("shortenURL", shortenURL);
 
 		return result;
