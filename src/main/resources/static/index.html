@@ -5,11 +5,10 @@
 <title>URL Shortening for KakaoPay</title>
 </head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <body>
 <img style="padding: 5px" alt="kakaopay_log" src="https://d2ypcb53dxqqiz.cloudfront.net/wp-content/uploads/2016/10/payk.png"/>
-<div style="align-content: center; padding: 55px; height: 330px; background: #FCE811;" align="center">
-	<table style="border: collapse">
+<div style="align-content: center; padding: 55px; height: 350px; background: #FCE811;" align="center">
+	<table style="border: collapse; height: 200px">
 	<tbody>
 	<tr>
 		<td colspan="2"><h1 style="color: #36231F; font-size:45px; font-weight: bold">Simplify your links</h1></td>
@@ -18,25 +17,35 @@
 		<td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td><input id="longURL" class="form-control" style="width: 750px; margin-right: 30px" type="text" placeholder="Please insert URL (ex: http://google.com)"/></td>
-		<td><button id="getShortURLBtn" class="btn btn-default" onclick="_getShortURL()">Get Short URL</button></td>
+		<td><input id="longURL" class="form-control" style="width: 750px; margin-right: 25px" type="text" placeholder="Please insert URL (ex: http://google.com)"/></td>
+		<td><button id="getShortURLBtn" class="btn btn-default" onclick="_getShortenURL()">Get Short URL</button></td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td colspan="2"><p style="font: #FCE811; font-weight: bold">http:// 혹은 https://로 시작하는 URL을 입력해주시기 바랍니다.</p></td>
-	</tr>
-	<tr>
-		<td colspan="2"><p id="message" style="color: #FCE811"></p></td>
+		<td colspan="2" style="heigh: 35px">
+		<div id="messageBox">
+			<span id="message" style="font: #FCE811; font-size: 17px; font-weight: bold">http:// 혹은 https://로 시작하는 URL을 입력해주시기 바랍니다.</span>
+		</div>
+		</td>
 	</tr>
 	</tbody>
 	</table>
 	<img style="padding: 200px" alt="kakaofriends" src="http://cfile9.uf.tistory.com/image/9951FF335A26A79229DC04" />
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script>
-const _getShortURL = () => {
+const _copyShortenURL = () => {
+	$("body").append(`<input id="shortenURL" type="text" style="position:absolute;top:-9999em;" />`);
+	$("#shortenURL").val($("#message").text());
+	$("#shortenURL").select();
+	document.execCommand("copy");
+	$("#shortenURL").remove();
+};
+
+const _getShortenURL = () => {
 	const longURL = $("#longURL").val();
 	
 	let data = {};
@@ -48,12 +57,26 @@ const _getShortURL = () => {
 		data: JSON.stringify(data),
 		url: "/shortening",
 		type: "POST",
-		success: function (response) {
-			$("#message").text(response.message);
+		success: (response) => {
+				$("#copyBtn").remove();
+				$("#message").text(response.message);
+				
+				if (response.status === "success") {
+					$("#messageBox")
+					.append(
+					`<button 
+					id="copyBtn"
+					style="margin-left: 10px;margin-bottom: 4px"
+					onclick="_copyShortenURL()"
+					class="btn btn-default btn-xs">
+					copy
+					</button>`		
+					);
+				}
 			},
-		error: function (error) {
+		error: (error) => {
 			console.log(error);
-			}
+		}
 	});
 }
 </script>

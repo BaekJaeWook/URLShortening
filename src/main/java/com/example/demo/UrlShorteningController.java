@@ -44,18 +44,21 @@ public class UrlShorteningController {
 		String longURL = (String) param.get("longURL");
 
 		if (longURL == null || "".equals(longURL) || longURL.trim().length() == 0) {
+			result.put("status", "fail");
 			result.put("message", "입력란이 비어있습니다.");
 			return result;
 		}
 
 		if (!longURL.startsWith("http://") && !longURL.startsWith("https://")) {
-			result.put("message", "http 혹은 https로 시작하는 유효한 URL을 입력해주시기 바랍니다.");
+			result.put("status", "fail");
+			result.put("message", "http:// 혹은 https://로 시작하는 유효한 URL을 입력해주시기 바랍니다.");
 			return result;
 		}
 
 		String shorteningKey = urlShorteningService.shorten((String) param.get("longURL"));
 		String shortenURL = "http://localhost:8080/" + shorteningKey;
 
+		result.put("status", "success");
 		result.put("message", shortenURL);
 		return result;
 	}
