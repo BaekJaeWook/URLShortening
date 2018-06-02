@@ -30,11 +30,15 @@ public class UrlShorteningController {
 
 	@RequestMapping(value = "/{param:[A-Za-z0-9]{1,8}$}")
 	public ModelAndView redirect(@PathVariable(required = true) String param) throws NoSuchAlgorithmException {
+		ModelAndView mav = new ModelAndView();
+		
 		if (UrlShorteningService.ERR_CODE_1.equals(urlShorteningService.getLongURL(param))) {
-			return new ModelAndView("redirect:/error.html");
+			mav.setViewName("redirect:/error.html");
+			return mav;
 		}
-
-		return new ModelAndView("redirect:" + urlShorteningService.getLongURL(param));
+		
+		mav.setViewName("redirect:" + urlShorteningService.getLongURL(param));
+		return mav;
 	}
 
 	@ResponseBody
