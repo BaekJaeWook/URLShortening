@@ -25,8 +25,7 @@ public class UrlShorteningController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {
-		System.out.println("home/index");
-		return "home/index";
+		return "index";
 	}
 
 	@RequestMapping(value = "/{param:[A-Za-z0-9]{1,8}$}")
