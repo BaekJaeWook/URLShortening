@@ -18,7 +18,7 @@ public class UrlShorteningApplication {
 
 		resolver.setPrefix("/");
 		resolver.setSuffix(".html");
-		
+
 		return resolver;
 	}
 }
