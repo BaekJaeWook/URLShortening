@@ -2,8 +2,8 @@ package com.example.demo;
 
 public class DD {
 	public final static String[] ERR_CODES = { "NOT_EXIST" };
-	public final static String EMPTY_MESSAGE = "ÀÔ·Â¶õÀÌ ºñ¾îÀÖ½À´Ï´Ù.";
-	public final static String INVALID_MESSAGE = "http:// È¤Àº https://·Î ½ÃÀÛÇÏ´Â À¯È¿ÇÑ URLÀ» ÀÔ·ÂÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.";
+	public final static String EMPTY_MESSAGE = "ì…ë ¥ë€ì— ë‹¨ì¶•í•˜ê³  ì‹¶ì€ URLì„ ì…ë ¥í•´ì£¼ì„¸ìš”.";
+	public final static String INVALID_MESSAGE = "http:// í˜¹ì€ https://ë¡œ ì‹œì‘í•˜ëŠ” ìœ íš¨í•œ URLì„ ì…ë ¥í•´ì£¼ì„¸ìš”.";
 	public final static String SUCCESS = "success";
 	public final static String FAIL = "fail";
 }

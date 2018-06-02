@@ -12,7 +12,7 @@ public class UrlShorteningDao {
 	JdbcTemplate jdbcTemplate;
 
 	public int insert(String shorteningKey, String longURL) {
-		String sql = "insert into url_map(shortening_key, long_url, create_date) values(?, ?, sysdate)";
+		String sql = "insert into url_map(shortening_key, long_url, create_date, expiry_date) values(?, ?, sysdate, sysdate + 7)";
 		return jdbcTemplate.update(sql, shorteningKey, longURL);
 	}
 
