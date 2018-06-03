@@ -41,7 +41,7 @@ public class UrlShorteningService {
 		L: while (true) {
 			String sha256Hash = sha256.encode(longURL.getBytes());
 
-			for (int i = 0; i < sha256Hash.length() - SUB_STRING_LENGTH; i++) {
+			for (int i = 0; i <= sha256Hash.length() - SUB_STRING_LENGTH; i++) {
 				String digits = sha256Hash.substring(i, i + SUB_STRING_LENGTH);
 				long longKey = Long.parseLong(digits, 16);
 
