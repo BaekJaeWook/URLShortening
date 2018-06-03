@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.util;
 
 public class Base62 {
 	final static int RADIX = 62;
