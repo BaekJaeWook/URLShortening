@@ -33,6 +33,7 @@
 
 ## Build
   - Gradle을 설치한 후 Project 경로로 이동
+  - Gradle은 https://gradle.org/install/#install 에 접속해서 설치파일을 다운받아 설치하거나 package manager를 이용하여 설치하실 수 있습니다.
   - cmd 혹은 terminal에서 gradle build 실행
   - 혹은 Windows의 경우 gradlew.bat 입력하거나 Linux의 경우 sudo sh ./gradlew 입력
 
