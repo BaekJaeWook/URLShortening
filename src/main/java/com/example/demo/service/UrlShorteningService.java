@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import java.security.NoSuchAlgorithmException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +17,14 @@ public class UrlShorteningService {
 	final static long MAX = 218340105584895l;
 	final static int SUB_STRING_LENGTH = 12;
 	final static String NOT_EXIST = "NOT_EXIST";
+	final static String HASH_COLLISION = "HASH_COLLISION";
+	final static String LONG_KEY_TOO_LARGE = "LONG_KEY_TOO_LARGE";
+
+	private static Logger logger = LogManager.getLogger(UrlShorteningService.class);
 
 	@Autowired
 	private UrlShorteningDao urlShorteningDao;
-	
+
 	@Autowired
 	private DDDao ddDao;
 
@@ -40,13 +46,13 @@ public class UrlShorteningService {
 				long longKey = Long.parseLong(digits, 16);
 
 				if (longKey >= MAX) {
-					System.out.println(longKey + " is too large");
+					logger.info(ddDao.getDDMessage(LONG_KEY_TOO_LARGE) + "[URL: " + longURL + " longKey: " + longKey + "]");
 					continue;
 				}
 
 				shorteningKey = base62.encode(longKey);
 				if (urlShorteningDao.isExistKey(shorteningKey)) {
-					System.out.println("Hash Collision");
+					logger.info(ddDao.getDDMessage(HASH_COLLISION) + "[" + shorteningKey + "]");
 				} else {
 					urlShorteningDao.insert(shorteningKey, longURL);
 					break L;

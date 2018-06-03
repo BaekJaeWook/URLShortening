@@ -20,11 +20,14 @@ import com.example.demo.service.UrlShorteningService;
 
 @Controller
 public class UrlShorteningController {
+	private static final String LONG_URL = "longURL";
 	private static final String NOT_EXIST = "NOT_EXIST";
 	private static final String FAIL = "FAIL";
 	private static final String EMPTY_MESSAGE = "EMPTY_MESSAGE";
 	private static final String INVALID_MESSAGE = "INVALID_MESSAGE";
 	private static final String SUCCESS = "SUCCESS";
+	private static final String STATUS = "status";
+	private static final String MESSAGE = "message";
 
 	@Autowired
 	UrlShorteningService urlShorteningService;
@@ -50,27 +53,27 @@ public class UrlShorteningController {
 	public Map<String, Object> urlShortening(@RequestBody Map<String, Object> param)
 			throws NoSuchAlgorithmException, UnknownHostException {
 		Map<String, Object> result = new HashMap<>();
-		String longURL = (String) param.get("longURL");
+		String longURL = (String) param.get(LONG_URL);
 		InetAddress local = InetAddress.getLocalHost();
 		String ip = local.getHostAddress();
 
 		if (longURL == null || "".equals(longURL) || longURL.trim().length() == 0) {
-			result.put("status", ddDao.getDDMessage(FAIL));
-			result.put("message", ddDao.getDDMessage(EMPTY_MESSAGE));
+			result.put(STATUS, ddDao.getDDMessage(FAIL));
+			result.put(MESSAGE, ddDao.getDDMessage(EMPTY_MESSAGE));
 			return result;
 		}
 
 		if (!longURL.startsWith("http://") && !longURL.startsWith("https://")) {
-			result.put("status", ddDao.getDDMessage(FAIL));
-			result.put("message", ddDao.getDDMessage(INVALID_MESSAGE));
+			result.put(STATUS, ddDao.getDDMessage(FAIL));
+			result.put(MESSAGE, ddDao.getDDMessage(INVALID_MESSAGE));
 			return result;
 		}
 
-		String shorteningKey = urlShorteningService.shorten((String) param.get("longURL"));
+		String shorteningKey = urlShorteningService.shorten((String) param.get(LONG_URL));
 		String shortenURL = "http://" + ip + ":8080/" + shorteningKey;
 
-		result.put("status",  ddDao.getDDMessage(SUCCESS));
-		result.put("message", shortenURL);
+		result.put(STATUS, ddDao.getDDMessage(SUCCESS));
+		result.put(MESSAGE, shortenURL);
 		return result;
 	}
 }

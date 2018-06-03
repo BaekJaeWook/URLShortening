@@ -20,3 +20,5 @@ insert into dd (id, message, create_date, modify_date) values ('INVALID_MESSAGE'
 insert into dd (id, message, create_date, modify_date) values ('SUCCESS', 'success', sysdate, sysdate);
 insert into dd (id, message, create_date, modify_date) values ('FAIL', 'fail', sysdate, sysdate);
 insert into dd (id, message, create_date, modify_date) values ('EXPIRY_DATE', '14', sysdate, sysdate);
+insert into dd (id, message, create_date, modify_date) values ('HASH_COLLISION', 'Hash Collision', sysdate, sysdate);
+insert into dd (id, message, create_date, modify_date) values ('LONG_KEY_TOO_LARGE', 'Too Large LongKey', sysdate, sysdate);
