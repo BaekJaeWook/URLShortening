@@ -9,9 +9,13 @@ import org.springframework.stereotype.Service;
 public class UrlShorteningService {
 	final static long MAX = 218340105584895l;
 	final static int SUB_STRING_LENGTH = 12;
+	final static String NOT_EXIST = "NOT_EXIST";
 
 	@Autowired
 	private UrlShorteningDao urlShorteningDao;
+	
+	@Autowired
+	private DDDao ddDao;
 
 	public String shorten(String longURL) throws NoSuchAlgorithmException {
 		SHA256 sha256 = new SHA256();
@@ -52,6 +56,6 @@ public class UrlShorteningService {
 		if (urlShorteningDao.isExistKey(shorteningKey)) {
 			return urlShorteningDao.getLongURL(shorteningKey);
 		}
-		return DD.ERR_CODES[0];
+		return ddDao.getDDMessage(NOT_EXIST);
 	}
 }

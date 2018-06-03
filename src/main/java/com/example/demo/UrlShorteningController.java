@@ -17,9 +17,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UrlShorteningController {
+	private static final String NOT_EXIST = "NOT_EXIST";
+	private static final String FAIL = "FAIL";
+	private static final String EMPTY_MESSAGE = "EMPTY_MESSAGE";
+	private static final String INVALID_MESSAGE = "INVALID_MESSAGE";
+	private static final String SUCCESS = "SUCCESS";
+
 	@Autowired
 	UrlShorteningService urlShorteningService;
-
+	
+	@Autowired
+	DDDao ddDao;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {
 		return "index";
@@ -27,7 +36,7 @@ public class UrlShorteningController {
 
 	@RequestMapping(value = "/{param:[A-Za-z0-9]{1,8}$}")
 	public ModelAndView redirect(@PathVariable(required = true) String param) throws NoSuchAlgorithmException {
-		if (DD.ERR_CODES[0].equals(urlShorteningService.getLongURL(param))) {
+		if (ddDao.getDDMessage(NOT_EXIST).equals(urlShorteningService.getLongURL(param))) {
 			return new ModelAndView("redirect:/error.html");
 		}
 		return new ModelAndView("redirect:" + urlShorteningService.getLongURL(param));
@@ -43,21 +52,21 @@ public class UrlShorteningController {
 		String ip = local.getHostAddress();
 
 		if (longURL == null || "".equals(longURL) || longURL.trim().length() == 0) {
-			result.put("status", DD.FAIL);
-			result.put("message", DD.EMPTY_MESSAGE);
+			result.put("status", ddDao.getDDMessage(FAIL));
+			result.put("message", ddDao.getDDMessage(EMPTY_MESSAGE));
 			return result;
 		}
 
 		if (!longURL.startsWith("http://") && !longURL.startsWith("https://")) {
-			result.put("status", DD.FAIL);
-			result.put("message", DD.INVALID_MESSAGE);
+			result.put("status", ddDao.getDDMessage(FAIL));
+			result.put("message", ddDao.getDDMessage(INVALID_MESSAGE));
 			return result;
 		}
 
 		String shorteningKey = urlShorteningService.shorten((String) param.get("longURL"));
 		String shortenURL = "http://" + ip + ":8080/" + shorteningKey;
 
-		result.put("status", DD.SUCCESS);
+		result.put("status",  ddDao.getDDMessage(SUCCESS));
 		result.put("message", shortenURL);
 		return result;
 	}

@@ -7,12 +7,17 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UrlShorteningDao {
-
+	
+	private final static String EXPIRY_DATE = "EXPIRY_DATE";
+	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
-
+	
+	@Autowired
+	DDDao ddDao;
+	
 	public int insert(String shorteningKey, String longURL) {
-		String sql = "insert into url_map(shortening_key, long_url, create_date, expiry_date) values(?, ?, sysdate, sysdate + " + DD.EXPIRY_DATE + ")";
+		String sql = "insert into url_map(shortening_key, long_url, create_date, expiry_date) values(?, ?, sysdate, sysdate + " + ddDao.getDDMessage(EXPIRY_DATE) + ")";
 		return jdbcTemplate.update(sql, shorteningKey, longURL);
 	}
 

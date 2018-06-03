@@ -1,10 +1,48 @@
 package com.example.demo;
 
+import java.util.Date;
+
 public class DD {
-	public final static String[] ERR_CODES = { "NOT_EXIST" };
-	public final static String EMPTY_MESSAGE = "입력란에 단축하시려는 URL을 입력해주세요.";
-	public final static String INVALID_MESSAGE = "http:// 혹은 https://로 시작하는 유효한 URL을 입력해주세요.";
-	public final static String SUCCESS = "success";
-	public final static String FAIL = "fail";
-	public final static int EXPIRY_DATE = 14;
+	private String id;
+	private String message;
+	private Date create_date;
+	private Date modify_date;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public Date getCreate_date() {
+		return create_date;
+	}
+
+	public void setCreate_date(Date create_date) {
+		this.create_date = create_date;
+	}
+
+	public Date getModify_date() {
+		return modify_date;
+	}
+
+	public void setModify_date(Date modify_date) {
+		this.modify_date = modify_date;
+	}
+
+	@Override
+	public String toString() {
+		return "DD [id=" + id + ", message=" + message + ", create_date=" + create_date + ", modify_date=" + modify_date
+				+ "]";
+	}
 }
