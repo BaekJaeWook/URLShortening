@@ -46,7 +46,8 @@ public class UrlShorteningService {
 				long longKey = Long.parseLong(digits, 16);
 
 				if (longKey >= MAX) {
-					logger.info(ddDao.getDDMessage(LONG_KEY_TOO_LARGE) + "[URL: " + longURL + " longKey: " + longKey + "]");
+					logger.info(
+							ddDao.getDDMessage(LONG_KEY_TOO_LARGE) + "[URL: " + longURL + " longKey: " + longKey + "]");
 					continue;
 				}
 

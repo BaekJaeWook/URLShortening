@@ -32,10 +32,10 @@ public class UrlShorteningController {
 
 	@Autowired
 	UrlShorteningService urlShorteningService;
-	
+
 	@Autowired
 	DDDao ddDao;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {
 		return "index";
@@ -55,15 +55,18 @@ public class UrlShorteningController {
 			throws NoSuchAlgorithmException, UnknownHostException {
 		XssFilter xf = new XssFilter();
 		Map<String, Object> result = new HashMap<>();
-		String longURL = xf.XssReplace((String) param.get(LONG_URL));
 		InetAddress local = InetAddress.getLocalHost();
 		String ip = local.getHostAddress();
+
+		String longURL = (String) param.get(LONG_URL);
 
 		if (longURL == null || "".equals(longURL) || longURL.trim().length() == 0) {
 			result.put(STATUS, ddDao.getDDMessage(FAIL));
 			result.put(MESSAGE, ddDao.getDDMessage(EMPTY_MESSAGE));
 			return result;
 		}
+		
+		longURL = xf.XssReplace(longURL);
 
 		if (!longURL.startsWith("http://") && !longURL.startsWith("https://")) {
 			result.put(STATUS, ddDao.getDDMessage(FAIL));

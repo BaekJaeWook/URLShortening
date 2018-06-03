@@ -3,7 +3,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class SHA256 {
-	final static String ALGORITHM = "SHA-256";
+	final private static String ALGORITHM = "SHA-256";
 	
 	public String encode(byte[] param) throws NoSuchAlgorithmException {
 		MessageDigest md;

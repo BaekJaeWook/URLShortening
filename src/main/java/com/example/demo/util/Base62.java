@@ -1,8 +1,8 @@
 package com.example.demo.util;
 
 public class Base62 {
-	final static int RADIX = 62;
-	final static String CODEC = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	final private static int RADIX = 62;
+	final private static String CODEC = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	
 	public String encode(long param) {
 		StringBuffer sb = new StringBuffer();
