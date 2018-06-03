@@ -34,10 +34,11 @@
 ## Build
   - Gradle을 설치한 후 Project 경로로 이동
   - cmd 혹은 terminal에서 gradle build 실행
-  - 혹은 Windows의 경우 gradlew.bat 입력하거나 Linux의 경우 sh ./gradlew 입력
+  - 혹은 Windows의 경우 gradlew.bat 입력하거나 Linux의 경우 sudo sh ./gradlew 입력
 
 ## Run
-  - Project 경로에서 gradle bootRun 입력
+  - Project 경로에서 gradle bootRun 입력(Linux의 경우 실행에 실패할시 sudo gradle bootRun으로 실행)
+  - java 1.9 버전에서는 실행이 안되실 수 있습니다. 1.8 버전으로 실행하시기 바랍니다. 
 
 ## Test
   - Unit Test는 URLShortening\src\test\java\com\example\demo\UrlShorteningApplicationTests.java 에 구현되어 있습니다.
