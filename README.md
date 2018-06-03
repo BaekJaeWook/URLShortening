@@ -32,9 +32,9 @@
   - Key는 localhost, service port 와 합쳐져 완성된 Shorten URL이되며 사용자가 사용할 수 있게 됩니다.
 
 ## Build
-  - Gradle을 먼저 설치한 후 Project 경로로 이동
+  - Gradle을 설치한 후 Project 경로로 이동
   - cmd 혹은 terminal에서 gradle build 실행
-  - 혹은 Windows의 경우 gradlew.bat 입력하거나 Linux의 경우 gradlew 입력
+  - 혹은 Windows의 경우 gradlew.bat 입력하거나 Linux의 경우 sh ./gradlew 입력
 
 ## Run
   - Project 경로에서 gradle bootRun 입력
