@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.DDDao;
 import com.example.demo.service.UrlShorteningService;
+import com.example.demo.util.XssFilter;
 
 @Controller
 public class UrlShorteningController {
@@ -52,8 +53,9 @@ public class UrlShorteningController {
 	@RequestMapping(value = "/shortening", method = RequestMethod.POST)
 	public Map<String, Object> urlShortening(@RequestBody Map<String, Object> param)
 			throws NoSuchAlgorithmException, UnknownHostException {
+		XssFilter xf = new XssFilter();
 		Map<String, Object> result = new HashMap<>();
-		String longURL = (String) param.get(LONG_URL);
+		String longURL = xf.XssReplace((String) param.get(LONG_URL));
 		InetAddress local = InetAddress.getLocalHost();
 		String ip = local.getHostAddress();
 
