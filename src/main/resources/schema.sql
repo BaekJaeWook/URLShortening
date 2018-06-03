@@ -15,8 +15,8 @@ create table dd
 );
 
 insert into dd (id, message, create_date, modify_date) values ('NOT_EXIST', 'NOT_EXIST', sysdate, sysdate);
-insert into dd (id, message, create_date, modify_date) values ('EMPTY_MESSAGE', 'ÀÔ·Â¶õ¿¡ ´ÜÃàÇÏ½Ã·Á´Â URLÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.', sysdate, sysdate);
-insert into dd (id, message, create_date, modify_date) values ('INVALID_MESSAGE', 'http:// È¤Àº https://·Î ½ÃÀÛÇÏ´Â À¯È¿ÇÑ URLÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.', sysdate, sysdate);
+insert into dd (id, message, create_date, modify_date) values ('EMPTY_MESSAGE', 'ì…ë ¥ë€ì— ë‹¨ì¶•í•˜ì‹œë ¤ëŠ” URLì„ ì…ë ¥í•´ì£¼ì„¸ìš”.', sysdate, sysdate);
+insert into dd (id, message, create_date, modify_date) values ('INVALID_MESSAGE', 'http:// í˜¹ì€ https://ë¡œ ì‹œì‘í•˜ëŠ” ìœ íš¨í•œ URLì„ ì…ë ¥í•´ì£¼ì„¸ìš”.', sysdate, sysdate);
 insert into dd (id, message, create_date, modify_date) values ('SUCCESS', 'success', sysdate, sysdate);
 insert into dd (id, message, create_date, modify_date) values ('FAIL', 'fail', sysdate, sysdate);
 insert into dd (id, message, create_date, modify_date) values ('EXPIRY_DATE', '14', sysdate, sysdate);
