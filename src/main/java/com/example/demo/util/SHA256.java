@@ -21,7 +21,7 @@ public class SHA256 {
 				}
 				hexString.append(hex);
 			}
-			endcodedData = hexString.reverse().toString();
+			endcodedData = hexString.toString();
 		} catch (NoSuchAlgorithmException e) {
 			throw new NoSuchAlgorithmException(ALGORITHM + " is not a proper algorithm.");
 		}
