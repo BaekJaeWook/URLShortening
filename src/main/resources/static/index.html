@@ -37,7 +37,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script>
-var _copyShortenURL = function() {
+function _copyShortenURL() {
 	$("body").append(`<input id="shortenURL" type="text" style="position:absolute;top:-9999em;" />`);
 	$("#shortenURL").val($("#message").text());
 	$("#shortenURL").select();
@@ -45,7 +45,7 @@ var _copyShortenURL = function() {
 	$("#shortenURL").remove();
 };
 
-var _getShortenURL = function() {
+function _getShortenURL()  {
 	var longURL = $("#longURL").val();
 	
 	var data = {};
