@@ -3,6 +3,8 @@
 ## Intro
   - URL Shortening Project는 긴 길이의 URL을 짧은 URL로 전환해주고 단축된 URL을 Browser에 입력시 단축하기 전 URL로 연결해주는 서비스입니다.
   - 사용자는 긴 길이의 URL을 전달하거나 외워야할 시에 편리할 뿐만 아니라 자신 외에는 해당 URL이 어느 URL로 연결되는지 알수 없게 되어 보안면에서도 효과를 기대할 수 있습니다.
+  - 화면은 URL을 입력할 수 있는 입력창과 Shorten URL을 가져오는 버튼 그리고 메시지를 확인할 수 있는 하단창으로 구성되어 있습니다.
+  - 8자리의 문자열이 home 뒤에 붙는 방식으로 구성성된 Shorten URL을 호출시 유효한 Key값이면 처음 저장한 URL로 연결이 되며, 유효하지 않는 URL입력시에는 error 페이지로 연결됩니다.
 
 ## Spec
   - Front-end
