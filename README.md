@@ -10,7 +10,7 @@
   - Front-end
     - HTML
     - JQuery
-    - Javascript (es6)
+    - Javascript
     - Bootstrap
   - Back-end
     - Spring Boot 2.1.0
