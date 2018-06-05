@@ -43,6 +43,9 @@ function _copyShortenURL() {
 	$("#shortenURL").select();
 	document.execCommand("copy");
 	$("#shortenURL").remove();
+	
+	alert("저장되었습니다!");
+	$("#longURL").val("");
 };
 
 function _getShortenURL()  {
@@ -79,6 +82,13 @@ function _getShortenURL()  {
 		}
 	});
 }
+
+$("#longURL").keyup(
+		function (event) {
+			if (event.keyCode == 13) {
+				_getShortenURL(); 
+			}
+		});
 </script>
 </body>
 </html>
