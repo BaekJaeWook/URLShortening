@@ -1,10 +1,11 @@
 package com.example.demo.util;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class SHA256 {
 	final private static String ALGORITHM = "SHA-256";
-	
+
 	public String encode(byte[] param) throws NoSuchAlgorithmException {
 		MessageDigest md;
 		String endcodedData = null;
@@ -21,7 +22,7 @@ public class SHA256 {
 				}
 				hexString.append(hex);
 			}
-			endcodedData = hexString.reverse().toString();
+			endcodedData = hexString.toString();
 		} catch (NoSuchAlgorithmException e) {
 			throw new NoSuchAlgorithmException(ALGORITHM + " is not a proper algorithm.");
 		}
