@@ -1,7 +1,7 @@
 package com.example.demo.util;
 
 public class XssFilter {
-	public String XssReplace(String param) {
+	public static String XssReplace(String param) {
 
 		param = param.replaceAll("\"", "&quot;");
 		param = param.replaceAll("'", "&apos;");
