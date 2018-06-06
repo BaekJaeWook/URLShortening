@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -29,20 +28,9 @@ public class UrlShorteningController {
 	private static final String SUCCESS = "SUCCESS";
 	private static final String STATUS = "status";
 	private static final String MESSAGE = "message";
+	private static final String IP_ADDRESS = "IP_ADDRESS";
 	private static final String PORT = "8080";
 	
-	private static String ip;
-	static {
-		InetAddress local = null;
-		try {
-			local = InetAddress.getLocalHost();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
-		
-		ip = local.getHostAddress();
-	}
-
 	@Autowired
 	UrlShorteningService urlShorteningService;
 
@@ -85,7 +73,7 @@ public class UrlShorteningController {
 		}
 
 		String shorteningKey = urlShorteningService.shorten((String) param.get(LONG_URL));
-		String shortenURL = "http://" + ip + ":" + PORT + "/" + shorteningKey;
+		String shortenURL = "http://" + ddService.getDDMessage(IP_ADDRESS) + ":" + PORT + "/" + shorteningKey;
 
 		result.put(STATUS, ddService.getDDMessage(SUCCESS));
 		result.put(MESSAGE, shortenURL);

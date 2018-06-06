@@ -22,3 +22,4 @@ insert into dd (id, message, create_date, modify_date) values ('FAIL', 'fail', s
 insert into dd (id, message, create_date, modify_date) values ('EXPIRY_DATE', '14', sysdate, sysdate);
 insert into dd (id, message, create_date, modify_date) values ('HASH_COLLISION', 'Hash Collision', sysdate, sysdate);
 insert into dd (id, message, create_date, modify_date) values ('LONG_KEY_TOO_LARGE', 'Too Large LongKey', sysdate, sysdate);
+insert into dd (id, message, create_date, modify_date) values ('IP_ADDRESS', '211.108.20.28', sysdate, sysdate);
