@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.service.DDServiceImpl;
-import com.example.demo.service.UrlShorteningServiceImpl;
+import com.example.demo.service.impl.DDServiceImpl;
+import com.example.demo.service.impl.UrlShorteningServiceImpl;
 import com.example.demo.util.XssFilter;
 
 @Controller

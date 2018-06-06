@@ -1,9 +1,10 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.DDDao;
+import com.example.demo.service.DDservice;
 
 @Service
 public class DDServiceImpl implements DDservice {

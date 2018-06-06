@@ -1,10 +1,12 @@
-package com.example.demo.dao;
+package com.example.demo.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.dao.DDDao;
+import com.example.demo.dao.UrlShorteningDao;
 import com.example.demo.vo.UrlMap;
 
 @Repository

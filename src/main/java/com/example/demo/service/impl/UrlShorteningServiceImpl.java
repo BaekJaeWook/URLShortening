@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.DDDao;
 import com.example.demo.dao.UrlShorteningDao;
+import com.example.demo.service.UrlShorteningService;
 import com.example.demo.util.Base62;
 import com.example.demo.util.SHA256;
 
