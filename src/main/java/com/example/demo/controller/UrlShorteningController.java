@@ -30,6 +30,8 @@ public class UrlShorteningController {
 	private static final String MESSAGE = "message";
 	private static final String IP_ADDRESS = "IP_ADDRESS";
 	private static final String PORT_NUMBER = "PORT_NUMBER";
+	private static final String HTTP = "http://";
+	private static final String HTTPS = "https://";
 
 	@Autowired
 	UrlShorteningServiceImpl urlShorteningService;
@@ -66,14 +68,15 @@ public class UrlShorteningController {
 
 		longURL = XssFilter.XssReplace(longURL);
 
-		if (!longURL.startsWith("http://") && !longURL.startsWith("https://")) {
+		if (!longURL.startsWith(HTTP) && !longURL.startsWith(HTTPS)) {
 			result.put(STATUS, ddService.getDDMessage(FAIL));
 			result.put(MESSAGE, ddService.getDDMessage(INVALID_MESSAGE));
 			return result;
 		}
 
 		String shorteningKey = urlShorteningService.shorten((String) param.get(LONG_URL));
-		String shortenURL = "http://" + ddService.getDDMessage(IP_ADDRESS) + ":" + ddService.getDDMessage(PORT_NUMBER) + "/" + shorteningKey;
+		String shortenURL = HTTP + ddService.getDDMessage(IP_ADDRESS) + ":" + ddService.getDDMessage(PORT_NUMBER) + "/"
+				+ shorteningKey;
 
 		result.put(STATUS, ddService.getDDMessage(SUCCESS));
 		result.put(MESSAGE, shortenURL);
