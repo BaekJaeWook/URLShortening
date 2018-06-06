@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.service.DDService;
-import com.example.demo.service.UrlShorteningService;
+import com.example.demo.service.DDServiceImpl;
+import com.example.demo.service.UrlShorteningServiceImpl;
 import com.example.demo.util.XssFilter;
 
 @Controller
@@ -32,10 +32,10 @@ public class UrlShorteningController {
 	private static final String PORT_NUMBER = "PORT_NUMBER";
 
 	@Autowired
-	UrlShorteningService urlShorteningService;
+	UrlShorteningServiceImpl urlShorteningService;
 
 	@Autowired
-	DDService ddService;
+	DDServiceImpl ddService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {

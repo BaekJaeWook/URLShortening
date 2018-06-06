@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dao.DDDao;
 
 @Service
-public class DDService {
+public class DDServiceImpl implements DDservice {
 
 	@Autowired
 	DDDao ddDao;
