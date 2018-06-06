@@ -65,7 +65,8 @@ public class UrlShorteningController {
 			result.put(MESSAGE, ddService.getDDMessage(EMPTY_MESSAGE));
 			return result;
 		}
-
+		
+		longURL = longURL.trim();
 		longURL = XssFilter.XssReplace(longURL);
 
 		if (!longURL.startsWith(HTTP) && !longURL.startsWith(HTTPS)) {
