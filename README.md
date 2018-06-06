@@ -44,7 +44,7 @@
   - java 1.9 버전에서는 실행이 안되실 수 있습니다. 1.8 버전으로 실행하시기 바랍니다. 
 
 ## Test
-  - Unit Test는 URLShortening\src\test\java\com\example\demo\UrlShorteningApplicationTests.java 에 구현되어 있습니다.
+  - Unit Test는 URLShortening\src\test\java\com\example\demo 아래의 controller, service, dao 폴더에 각각 구현되어있습니다.
 
 ## etc
   - URL은 http:// 혹은 https://로 입력된 값만 처리하도록 제한하였습니다.
