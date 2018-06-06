@@ -47,7 +47,7 @@ public class UrlShorteningApplicationTests {
 	@Test
 	public void UrlShorteningDao_shorten_test() {
 		// when
-		int temp = urlShorteningDao.insert("4PHxjPIe", "https://www.kakaopay.com/");
+		int temp = urlShorteningDao.insert("3wwuu0eU", "https://www.kakaopay.com/");
 
 		// then
 		assertThat(temp, is(1));
@@ -56,10 +56,10 @@ public class UrlShorteningApplicationTests {
 	@Test
 	public void UrlShorteningDao_getLongURL_test() {
 		// given
-		urlShorteningDao.insert("dGBkq3sg", "https://www.google.com/");
+		urlShorteningDao.insert("vHl1T75H", "https://www.google.com/");
 
 		// when
-		String temp = urlShorteningDao.getLongURL("dGBkq3sg");
+		String temp = urlShorteningDao.getLongURL("vHl1T75H");
 
 		// then
 		assertThat(temp, is("https://www.google.com/"));
@@ -68,19 +68,19 @@ public class UrlShorteningApplicationTests {
 	@Test
 	public void UrlShorteningDao_getShorteningKey_test() {
 		// given
-		urlShorteningDao.insert("HQcsynyk", "https://github.com/");
+		urlShorteningDao.insert("h9Yue8AD", "https://github.com/");
 
 		// when
 		String temp = urlShorteningDao.getShorteningKey("https://github.com/");
 
 		// then
-		assertThat(temp, is("HQcsynyk"));
+		assertThat(temp, is("h9Yue8AD"));
 	}
 
 	@Test
 	public void UrlShorteningDao_isRegisteredLongURL_true_test() {
 		// given
-		urlShorteningDao.insert("MIWZXRAl", "https://www.youtube.com/");
+		urlShorteningDao.insert("eR81OoV6", "https://www.youtube.com/");
 
 		// when
 		boolean temp = urlShorteningDao.isRegisteredLongURL("https://www.youtube.com/");
@@ -92,10 +92,10 @@ public class UrlShorteningApplicationTests {
 	@Test
 	public void UrlShorteningDao_isExistKey_true_test() {
 		// given
-		urlShorteningDao.insert("IGp1tm0x", "http://www.samsung.com");
+		urlShorteningDao.insert("Sak30Hsw", "http://www.samsung.com");
 
 		// when
-		boolean temp = urlShorteningDao.isExistKey("IGp1tm0x");
+		boolean temp = urlShorteningDao.isExistKey("Sak30Hsw");
 
 		// then
 		assertThat(temp, is(true));
@@ -123,13 +123,13 @@ public class UrlShorteningApplicationTests {
 	public void UrlShorteningService_register_registed_url_test() throws NoSuchAlgorithmException {
 		// given
 		String longURL = "https://www.daum.net/";
-		urlShorteningDao.insert("9R5sfsvT", longURL);
+		urlShorteningDao.insert("1T2doEsk", longURL);
 
 		// when
 		String temp = urlShorteningService.shorten(longURL);
 
 		// then
-		assertThat(temp, is("9R5sfsvT"));
+		assertThat(temp, is("1T2doEsk"));
 	}
 
 	@Test
@@ -144,8 +144,8 @@ public class UrlShorteningApplicationTests {
 	@Test
 	public void UrlShorteningController_redirect_success_test() throws NoSuchAlgorithmException {
 		// given
-		urlShorteningDao.insert("UUhqE4NP", "https://github.com/code0xff/URLShortening");
-		String param = "UUhqE4NP";
+		urlShorteningDao.insert("7G0W1u8c", "https://github.com/code0xff/URLShortening");
+		String param = "7G0W1u8c";
 
 		// when
 		ModelAndView temp = urlShorteningController.redirect(param);
@@ -179,7 +179,7 @@ public class UrlShorteningApplicationTests {
 		result = urlShorteningController.urlShortening(param);
 
 		// then
-		assertThat(result.get("message"), is("http://211.108.26.18:8080/zcnq84ym"));
+		assertThat(result.get("message"), is("http://211.108.20.28:8080/3EvUzNu2"));
 	}
 
 	@Test
