@@ -27,6 +27,7 @@
 		<td colspan="2" style="heigh: 35px">
 		<div id="messageBox">
 			<span id="message" style="font: #FCE811; font-size: 17px; font-weight: bold">http:// 혹은 https://로 시작하는 URL을 입력해주시기 바랍니다.</span>
+			&nbsp;
 		</div>
 		</td>
 	</tr>
@@ -61,11 +62,10 @@ function _getShortenURL()  {
 		url: "/shortening",
 		type: "POST",
 		success: function (response) {
-				$("#messageBox").empty();
+				$("#copyBtn").remove();
 				$("#message").text(response.message);
 				
 				if (response.status === "success") {
-					$("#messageBox").append("&nbsp;&nbsp;");
 					$("#messageBox")
 					.append(
 					`<span id="copyBtn" 
