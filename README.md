@@ -49,3 +49,4 @@
 ## etc
   - URL은 http:// 혹은 https://로 입력된 값만 처리하도록 제한하였습니다.
   - 단축된 URL을 clip board에 저장할 수 있도록 버튼이 생성됩니다.
+  - enter key를 입력할 경우 Get Short URL 버튼 클릭과 동일하게 작동합니다.
