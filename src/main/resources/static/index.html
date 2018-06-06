@@ -61,7 +61,7 @@ function _getShortenURL()  {
 		url: "/shortening",
 		type: "POST",
 		success: function (response) {
-				$("#copyBtn").remove();
+				$("#messageBox").empty();
 				$("#message").text(response.message);
 				
 				if (response.status === "success") {
