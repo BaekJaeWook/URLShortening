@@ -37,9 +37,6 @@ public class UrlShorteningController {
 	@Autowired
 	DDService ddService;
 
-	private String ip = ddService.getDDMessage(IP_ADDRESS);
-	private String port = ddService.getDDMessage(PORT_NUMBER);
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {
 		return "index";
@@ -76,7 +73,7 @@ public class UrlShorteningController {
 		}
 
 		String shorteningKey = urlShorteningService.shorten((String) param.get(LONG_URL));
-		String shortenURL = "http://" + ip + ":" + port + "/" + shorteningKey;
+		String shortenURL = "http://" + ddService.getDDMessage(IP_ADDRESS) + ":" + ddService.getDDMessage(PORT_NUMBER) + "/" + shorteningKey;
 
 		result.put(STATUS, ddService.getDDMessage(SUCCESS));
 		result.put(MESSAGE, shortenURL);
