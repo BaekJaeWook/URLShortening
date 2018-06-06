@@ -65,15 +65,15 @@ function _getShortenURL()  {
 				$("#message").text(response.message);
 				
 				if (response.status === "success") {
+					$("#messageBox").append("&nbsp;&nbsp;");
 					$("#messageBox")
 					.append(
-					`<button 
-					id="copyBtn"
-					style="margin-left: 10px;margin-bottom: 4px"
-					onclick="_copyShortenURL()"
-					class="btn btn-default btn-xs">
-					copy
-					</button>`		
+					`<span id="copyBtn" 
+					style="cursor:pointer; font-size:120%;"
+					onclick="_copyShortenURL()" 
+					class="glyphicon glyphicon-copy" 
+					aria-hidden="true">
+					</span>`
 					);
 				}
 			},
